@@ -1,0 +1,42 @@
+#mysql #1.显示数据库列表 show databases;
+
+#2.显示库中的数据表
+use mysql;
+show tables;
+
+#3.显示数据表的结构
+describe <table>;
+
+#4.建库与删库
+create database <db_name>;
+drop database <db_name>;
+
+#5.建表与删表
+use <db_name>;
+create table <table_name>(字段列表);
+drop table <table_name>;
+
+#6.清空表中纪录
+delete from <table_name>;
+
+#7.显示表中的纪录
+select * from <table_name>;
+
+
+>>导出和导入数据
+#1.导出数据
+mysqldump --opt test > mysql.test 即将数据库test数据库导出到mysql.test文件，后者是一个文本文件
+如: mysqldump -u root -p 123 --databases <db_name> > mysql.<db_name>
+
+#2.导入数据
+mysqlimport -u root -p 123 < mysql.dbname
+
+#3.将文本数据导入数据库
+文本数据的字段数据之间用tab健隔开
+use test;
+load data local infile 'file_name' into table <table_name>;
+
+>>连接到远程主机上的mysql
+假定远程主机的IP为：110.110.110.110，用户名为root，密码为abc123。
+mysql -h 110.110.110.110 -u root -p abc123
+
